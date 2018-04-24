@@ -1,0 +1,96 @@
+html {
+  font-size: 10px;
+  background: url("Abandoned-Piano.jpg") bottom center;
+  background-size: cover;
+}
+body,html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.piano {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+}
+.notes {
+
+  display: flex;
+  /* flex: 1; */
+  min-height: 10vh;
+  align-items: center;
+  justify-content: center;
+}
+.text {
+      color:white; 
+      font-size: 2rem;
+      display: flex;
+      /* flex: 1; */
+      min-height: 10vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction:column;
+      text-shadow: 0 0 .5rem black;
+}
+
+.note {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .10s ease;
+  width: 10rem;
+  height: 20rem;
+  text-align: center;
+  color: rgb(255, 231, 153);
+  background: rgba(218, 218, 218, 0.808);
+  text-shadow: 0 0 .5rem black;
+}
+
+.blacknote {
+    border: .4rem solid rgb(182, 182, 182);
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .10s ease;
+    width: 10rem;
+    height: 20rem;
+    text-align: center;
+    color: rgb(255, 231, 153);
+    background: rgba(0, 0, 0, 0.925);
+    text-shadow: 0 0 .5rem rgb(254, 255, 209);
+  }
+
+.blank {
+    visibility: hidden;
+}
+.playing {
+  transform: scale(1.1);
+  border-color: #00b7ff;
+  box-shadow: 0 0 1rem #00b7ff;
+}
+
+note {
+  display: block;
+  font-size: 4rem;
+}
+
+.key {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #070605;
+}
+.blackkey {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #ffffff;
+  }

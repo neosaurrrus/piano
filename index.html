@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple JS Piano</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class = piano>
+        <div class="text">
+            <h1>Javascript Piano</h1><br><br>
+            <h4>Uses HTML, CSS, JS</h4>
+        </div>
+    <div class="notes">
+        <div data-key="87" class="blacknote">
+            <note>C#</note>
+            <span class="blackkey">W</span>
+        </div>
+
+        <div data-key="69" class="blacknote">
+            <note>D#</note>
+            <span class="blackkey">E</span>
+        </div>
+        <div class="blacknote blank"></div>
+        <div data-key="84" class="blacknote">
+            <note>F#</note>
+            <span class="blackkey">T</span>
+        </div>
+        <div data-key="89" class="blacknote">
+            <note>G#</note>
+            <span class="blackkey">Y</span>
+        </div>
+        <div data-key="85" class="blacknote">
+            <note>A#</note>
+            <span class="blackkey">U</span>
+        </div>
+        <div class="blacknote blank"></div>
+    </div>
+    <div class="notes">
+        <div data-key="65" class="note">
+        <note>C</note>
+        <span class="key">A</span>
+        </div>
+        <div data-key="83" class="note">
+        <note>D</note>
+        <span class="key">S</span>
+        </div>
+        <div data-key="68" class="note">
+        <note>E</note>
+        <span class="key">D</span>
+        </div>
+        <div data-key="70" class="note">
+        <note>F</note>
+        <span class="key">F</span>
+        </div>
+        <div data-key="71" class="note">
+        <note>G</note>
+        <span class="key">G</span>
+        </div>
+        <div data-key="72" class="note">
+        <note>A</note>
+        <span class="key">H</span>
+        </div>
+        <div data-key="74" class="note">
+        <note>B</note>
+        <span class="key">J</span>
+        </div>
+        <div data-key="75" class="note">
+        <note>C</note>
+        <span class="key">K</span>
+        </div>
+    </div>
+</div>
+  <audio data-key="65" src="sounds/c1.wav"></audio>
+  <audio data-key="83" src="sounds/d1.wav"></audio>
+  <audio data-key="68" src="sounds/e1.wav"></audio>
+  <audio data-key="70" src="sounds/f1.wav"></audio>
+  <audio data-key="71" src="sounds/g1.wav"></audio>
+  <audio data-key="72" src="sounds/a1.wav"></audio>
+  <audio data-key="74" src="sounds/b1.wav"></audio>
+  <audio data-key="75" src="sounds/c2.wav"></audio>
+  <audio data-key="87" src="sounds/c1s.wav"></audio>
+  <audio data-key="69" src="sounds/d1s.wav"></audio>
+  <audio data-key="84" src="sounds/f1s.wav"></audio>
+  <audio data-key="89" src="sounds/g1s.wav"></audio>
+  <audio data-key="85" src="sounds/a1s.wav"></audio>
+
+
+
+<script>
+    function playNote(event) {
+        const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`); //returns the element which matches the data key
+        const note = document.querySelector(`.note[data-key="${event.keyCode}"], .blacknote[data-key="${event.keyCode}"]`);
+        if (!audio) return;
+        audio.currentTime = 0; //rewind to the start
+        audio.play();
+        note.classList.add('playing');
+    };
+    function removeTransition(event) {
+        if (event.propertyName !== 'transform') return; //Skip if not the transform event
+        this.classList.remove('playing');
+    };
+    const notes = document.querySelectorAll('.note, .blacknote');
+    notes.forEach(note => {
+       note.addEventListener('transitionend', removeTransition) 
+    });
+    window.addEventListener('keydown', playNote);
+</script>
+
+
+</body>
+</html>
